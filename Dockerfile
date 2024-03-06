@@ -106,7 +106,8 @@ FROM --platform=$BUILDPLATFORM docker.io/library/golang:1.20.10@sha256:ed6c4a591
 WORKDIR /go/src/github.com/argoproj/argo-cd
 
 COPY go.* ./
-RUN go mod download
+
+RUN GOINSECURE=proxy.golang.org go mod download
 
 # Perform the build
 COPY . .
