@@ -25,13 +25,13 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 WORKDIR /tmp
 
-COPY hack/install.sh ./
-COPY hack/tool-versions.sh ./
+COPY hack/install.sh /tmp
+COPY hack/tool-versions.sh /tmp
 RUN ls -al
-COPY hack/installers installers
+COPY hack/installers /tmp/installers
 
-RUN ./install.sh helm-linux && \
-    INSTALL_PATH=/usr/local/bin ./install.sh kustomize
+RUN /tmp/install.sh helm-linux && \
+    INSTALL_PATH=/usr/local/bin /tmp/install.sh kustomize
 
 ####################################################################################################
 # Argo CD Base - used as the base for both the release and dev argocd images
