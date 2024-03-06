@@ -27,6 +27,7 @@ WORKDIR /tmp
 
 COPY hack/install.sh /tmp
 COPY hack/tool-versions.sh /tmp
+CMD chmod 775 /tmp/*.sh
 RUN ls -al
 RUN pwd
 COPY hack/installers /tmp/installers
