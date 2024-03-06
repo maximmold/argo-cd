@@ -36,7 +36,7 @@ esac
 
 export TARGET_FILE=protoc_${protoc_version}_${OS}_${ARCHITECTURE}.zip
 url=https://github.com/protocolbuffers/protobuf/releases/download/v${protoc_version}/protoc-${protoc_version}-${protoc_os}-${protoc_arch}.zip
-[ -e $DOWNLOADS/${TARGET_FILE} ] || curl -sLf --retry 3 -o $DOWNLOADS/${TARGET_FILE} ${url}
+[ -e $DOWNLOADS/${TARGET_FILE} ] || curl -skLf --retry 3 -o $DOWNLOADS/${TARGET_FILE} ${url}
 $(dirname $0)/compare-chksum.sh
 mkdir -p /tmp/protoc-${protoc_version}
 unzip -o $DOWNLOADS/${TARGET_FILE} -d /tmp/protoc-${protoc_version}

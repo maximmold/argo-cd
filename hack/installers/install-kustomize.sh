@@ -26,7 +26,7 @@ case $ARCHITECTURE in
       export TARGET_FILE=kustomize_${KUSTOMIZE_VERSION}_${INSTALL_OS}_${ARCHITECTURE}.tar.gz
       URL=https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_${INSTALL_OS}_$ARCHITECTURE.tar.gz
       BINNAME=kustomize
-      [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -sLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
+      [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -skLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
       $(dirname $0)/compare-chksum.sh
       tar -C /tmp -xf ${DOWNLOADS}/${TARGET_FILE}
       sudo install -m 0755 /tmp/kustomize $INSTALL_PATH/$BINNAME
@@ -37,7 +37,7 @@ case $ARCHITECTURE in
         export TARGET_FILE=kustomize_${KUSTOMIZE_VERSION}_${INSTALL_OS}_${ARCHITECTURE}
         URL=https://github.com/kubernetes-sigs/kustomize/releases/download/v${KUSTOMIZE_VERSION}/kustomize_${KUSTOMIZE_VERSION}_${INSTALL_OS}_$ARCHITECTURE
         BINNAME=kustomize2
-        [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -sLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
+        [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -skLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
         $(dirname $0)/compare-chksum.sh
         sudo install -m 0755 ${DOWNLOADS}/${TARGET_FILE} $INSTALL_PATH/$BINNAME
         ;;
@@ -45,7 +45,7 @@ case $ARCHITECTURE in
         export TARGET_FILE=kustomize_${KUSTOMIZE_VERSION}_${INSTALL_OS}_${ARCHITECTURE}.tar.gz
         URL=https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_${INSTALL_OS}_$ARCHITECTURE.tar.gz
         BINNAME=kustomize
-        [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -sLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
+        [ -e ${DOWNLOADS}/${TARGET_FILE} ] || curl -skLf --retry 3 -o ${DOWNLOADS}/${TARGET_FILE} "$URL"
         $(dirname $0)/compare-chksum.sh
         tar -C /tmp -xf ${DOWNLOADS}/${TARGET_FILE}
         sudo install -m 0755 /tmp/kustomize $INSTALL_PATH/$BINNAME
