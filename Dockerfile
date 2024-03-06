@@ -27,6 +27,7 @@ WORKDIR /tmp
 
 COPY hack/install.sh ./
 COPY hack/tool-versions.sh ./
+RUN ls -al
 COPY hack/installers installers
 
 RUN ./install.sh helm-linux && \
