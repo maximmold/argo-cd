@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	FakeArgoCDNamespace = "fake-argocd-ns"
+	FakeArgoCDNamespace = "argocd-tenant"
 	FakeDestNamespace   = "fake-dest-ns"
 	FakeClusterURL      = "https://fake-cluster:443"
 )

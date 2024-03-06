@@ -1863,7 +1863,10 @@ func (ctrl *ApplicationController) newApplicationInformerAndLister() (cache.Shar
 				newItems := []appv1.Application{}
 				for _, app := range appList.Items {
 					if ctrl.namespace == app.Namespace || glob.MatchStringInList(ctrl.applicationNamespaces, app.Namespace, false) {
+					    log.Infof("Found match for Namespace %s and Name %s", app.Namespace, app.Name)
 						newItems = append(newItems, app)
+					} else {
+					    log.Infof("No match for Namespace %s and Name %s", app.Namespace, app.Name)
 					}
 				}
 				appList.Items = newItems
